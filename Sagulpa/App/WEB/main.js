@@ -1,11 +1,8 @@
 // instanciates buttons, urls and title to change the design and send params
 let btn = document.getElementById('btn-send');
 let btn_change = document.getElementById('btn-change');
-let url_entrada = 'http://127.0.0.1:8000/get-Entradas';
-let url_salida = 'http://127.0.0.1:8000/get-Salidas';
+let url = 'http://127.0.0.1:8000/get-Results';
 let title = document.getElementById('title');
-let theme1 = document.getElementById('entry');
-let theme2 = document.getElementById('exit');
 
 
 /*------ a function to check if the switchers are checked or not    ------- */
@@ -22,18 +19,15 @@ and the second on for exits if you click the button the cont will change the val
  */
 let cont = 0;
 btn_change.addEventListener('click', function () {
-    cont++;
-    if (cont == 1) {
-        theme1.style.display == 'none';
-        theme2.style.display == 'block';
-        title.innerText = 'Predicción de Salidas';
-        btn_change.innerText = 'Cambiar a entradas';  
-    } else {
-        btn_change.innerText = 'Cambiar a salidas';
+    if(cont ==1){
         title.innerText = 'Predicción de Entradas';
-        theme2.style.display == 'none';
-        theme1.style.display == 'block';
-        cont = 0
+        btn_change.innerText = 'Cambiar a salidas';
+        cont=0;
+    }
+    else{
+        cont++;
+        title.innerText = 'Predicción de Salidas';
+        btn_change.innerText = 'Cambiar a entradas';
     }
 })
 
@@ -62,70 +56,33 @@ btn.addEventListener('click', function () {
         "holiday": festivo,
         "temperature": parseInt(temp),
         "humidity": parseInt(hum),
-        "day_week": parseInt(day_week)
+        "day_week": parseInt(day_week),
+        "type": cont
     }
     console.log(request)
-    if (cont == 0) {
-        fetch(url_entrada, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'cors',
-            body: JSON.stringify(request)
-        })
-            .then(function (response) {
-                if (response.status == 422) {
-                    Swal.fire({
-                        title: 'Error',
-                        icon: 'error',
-                        text: 'Comprueba los parámetros.',
-                        showCloseButton: true,
-                    })
-                }
-                else {
-                    promise = response.json()
-                    promise.then(function (result) {
-                        Swal.fire({
-                            title: 'Resultado',
-                            icon: 'success',
-                            text: 'La precisión ha sido de: ' + result + ' entradas.',
-                            showCloseButton: true,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            }
-                        })
-                    });
-                }
-            })
-            .catch(function (response) {
-                console.log(response);
-            })
-    }
-    else {
-        fetch(url_salida, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'cors',
-            body: JSON.stringify(request)
-        })
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+        body: JSON.stringify(request)
+    })
         .then(function (response) {
-                if (response.status == 422) {
-                    Swal.fire({
-                        title: 'Error',
-                        icon: 'error',
-                        text: 'Comprueba los parámetros.',
-                        showCloseButton: true,
-                    })
-                }
-                else {
-                    promise = response.json()
-                    promise.then(function (result) {
+            if (response.status == 422) {
+                Swal.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: 'Comprueba los parámetros.',
+                    showCloseButton: true,
+                })
+            }
+            else {
+                promise = response.json()
+                promise.then(function (result) {
+                    if(result[1] == 0){
                         Swal.fire({
                             title: 'Resultado',
                             icon: 'success',
-                            text: 'La precisión ha sido de: ' + result + ' salidas.',
+                            text: 'La precisión ha sido de: ' + result[0] + ' entradas.',
                             showCloseButton: true,
                             showClass: {
                                 popup: 'animate__animated animate__fadeInDown'
@@ -134,11 +91,26 @@ btn.addEventListener('click', function () {
                                 popup: 'animate__animated animate__fadeOutUp'
                             }
                         })
-                    });
-                }
-            })
-            .catch (function (response) {
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Resultado',
+                            icon: 'success',
+                            text: 'La precisión ha sido de: ' + result[0] + ' salidas.',
+                            showCloseButton: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    }
+                    
+                });
+            }
+        })
+        .catch(function (response) {
             console.log(response);
         })
-    }
 });

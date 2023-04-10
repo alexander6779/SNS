@@ -12,7 +12,7 @@ def model_prediction(x_in, model):
 #method to instanciate the model and add it the params then we call the function model_prediction to get the prediction
 # I also use i as an id to know if what we are guessing are entries or exits.
 def main(i,item):   
-    if i ==1 :
+    if i ==0 :
         model = joblib.load('./models/Modelo_entrenado_entradas.pkl')
         x_in = [np.float_(item.parking),
             np.float_(item.day),

@@ -18,6 +18,7 @@ class Request(BaseModel):
     temperature:int
     humidity:int
     day_week : int
+    type: int
 
 
 # Configuración de CORS
@@ -36,17 +37,9 @@ app.add_middleware(
 )
 
 
-# post endpoint to know entries and returns a result
-@app.post("/get-Entradas")
+# post endpoint that returns the prediction
+@app.post("/get-Results")
 async def read_root(entrada : Request):
-    pred = main(1,entrada)
-    return JSONResponse(content=pred)
+    pred = main(entrada.type,entrada)
+    return JSONResponse(content=[pred,entrada.type])
     
-
-# post endpoint to know exits and returns a result
-@app.post("/get-Salidas")
-async def read_root(salida : Request):
-    pred = main(2,salida)
-    print(pred)  
-    return JSONResponse(content=pred)
-
