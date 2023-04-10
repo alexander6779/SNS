@@ -2,6 +2,6 @@ Points of view.
 
 1. The api rest is based on FAST API, so if you want it works on you pc, you first must to install fast api with pip install, 
     later to run it, you have to use the next command : uvicorn main:app --reload.
-2. I also use numpy and joblib to manage data and import the model, so you would have to install those libraries, if you have downloaded before you dont need to.
+2. I also use numpy,joblib and scikit learn to manage data,import the model and get a prediction, so you would have to install those libraries, if you have downloaded before you dont need to.
 
 For more information, you can take a look of this steps right here -> https://fastapi.tiangolo.com/ which is the documentation of FAST API.
