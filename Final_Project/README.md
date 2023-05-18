@@ -1,12 +1,12 @@
-##Suscripción de clientes de bancos portugueses a un depósito trimestral (Producto)
+## Suscripción de clientes de bancos portugueses a un depósito trimestral (Producto)
 
-###Introducción
+### Introducción
 
 El objetivo de este proyecto va a ser la creación e implementación de un algoritmo predictivo, compuesto por un conjunto de
 variables cómo pueden ser edad,profesión,estudios,... que sea capaz de predecir si el cliente se suscribirá al producto o no.
 Entiendo yo que con el objetivo de saber si la campaña de marketing va a ser rentable o no.
 
-###Campaña de marketing
+### Campaña de marketing
 
 1. Fuentes
    Created by: Paulo Cortez (Univ. Minho) and Sérgio Moro (ISCTE-IUL) @ 2012
@@ -30,7 +30,7 @@ Entiendo yo que con el objetivo de saber si la campaña de marketing va a ser re
 5. Numero de variables: 16 + salida.
 
 
-###Descripción de las variables.
+### Descripción de las variables.
 
 - age (numeric)
 - job : type of job (categorical: "admin","unknown","unemployed","management","housemaid","entrepreneur","student","blue-collar","self-employed","retired","technician","services") 
