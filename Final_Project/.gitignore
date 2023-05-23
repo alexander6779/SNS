@@ -32,3 +32,5 @@ ipython_config.py
 # Ignore all local history of files
 .history
 .ionide
+
+./web_service/API/_pycache_

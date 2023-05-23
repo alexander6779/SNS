@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+.mv-left{
+    margin-left: 0%;
+}
+
+p{
+    color: aliceblue;
+}
+
+h1,h2,h3,h4,h5{
+    color: aliceblue;
+}
+
+label{
+    color: aliceblue;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg,#44FFD1, #6153CC, #A60067);
+    background-size: 180% 180%;
+    animation: gradient-animation 8s ease-in-out infinite ;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 30% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 30% 50%;
+    }
+}
