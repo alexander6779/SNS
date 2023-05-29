@@ -7,6 +7,10 @@
 * Finally, when you finish the previous steps, you have to run the api, writing the next prompt in the command console => uvicorn main:app --reload, this is to run the api,so from here you can start testing the web app.
 
 The preview.
+
+
+
+
 <img width="450" alt="image" src="https://github.com/alexander6779/SNS/assets/114480388/45a76a55-5216-4456-9789-b2f27b593d62">
 
 You can find part of this information here : https://fastapi.tiangolo.com/
