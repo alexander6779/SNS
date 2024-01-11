@@ -1,4 +1,4 @@
-# Learning machine task 
+# Machine Learning task 
 
 In this activity we use a csv of features from diferents kind of running races, like distance, max height, min height, max temperature, min temperature, calories, type of race, heart rate frequency,etc.The task is a classification problem where we have to train some models from Naive Bayes and KNN and see which one has the best accuracy using the previous data and before this step we have to make a process to transform some data from categorical to numerical,change the type of data and look all the variables (columns from the csv) you need.This means, it's not neccesary to pick up all the variables , only the ones that get correlation as well as those columns which are very important for the problem and you think it makes sense to use it in the issue.Then, we train that model to find out the type of efffort, with this code you can not check it visually, but you can make an APIREST and see the results.
 
